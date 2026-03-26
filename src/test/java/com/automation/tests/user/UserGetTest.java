@@ -1,7 +1,6 @@
 package com.automation.tests.user;
 
 import com.automation.config.Config;
-import com.automation.utils.user.TestDataUserPost;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
