@@ -23,11 +23,11 @@ public class UserGetTest extends BaseUserTest {
         given()
                 .log().all()
                 .when()
-                .get(Config.GET_USER(), postUsername)
+                .get(Config.GET_USER, postUsername)
                 .then()
                 .log().all()
                 .assertThat()
-                .statusCode(Config.SUCCESS_STATUS_CODE())
+                .statusCode(Config.SUCCESS_STATUS_CODE)
                 .body("username", equalTo(postUsername));
     }
 }

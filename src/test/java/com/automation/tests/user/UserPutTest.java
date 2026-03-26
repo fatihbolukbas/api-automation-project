@@ -30,7 +30,7 @@ public class UserPutTest extends BaseUserTest {
 
         given()
                 .log().all()
-                .header(Config.CONTENT_TYPE_HEADER(), Config.CONTENT_TYPE_JSON())
+                .header(Config.CONTENT_TYPE_HEADER, Config.CONTENT_TYPE_JSON)
                 .body(PostUserPayload.getRegisterPayload(putId,
                         putUsername,
                         putFirstName,
@@ -41,11 +41,11 @@ public class UserPutTest extends BaseUserTest {
                         putUserStatus
                 ))
                 .when()
-                .put(Config.UPDATE_USER(), putUsername)
+                .put(Config.UPDATE_USER, putUsername)
                 .then()
                 .log().all()
                 .assertThat()
-                .statusCode(Config.SUCCESS_STATUS_CODE())
-                .body("code", equalTo(Config.SUCCESS_STATUS_CODE()));
+                .statusCode(Config.SUCCESS_STATUS_CODE)
+                .body("code", equalTo(Config.SUCCESS_STATUS_CODE));
     }
 }

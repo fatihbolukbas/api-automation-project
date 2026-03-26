@@ -16,7 +16,7 @@ public class CRUDFlowTest {
     @Test
     public void shouldRunCrudFlow() {
 
-        RestAssured.baseURI = Config.BASE_URI();
+        RestAssured.baseURI = Config.BASE_URI;
 
         int postId = TestDataUserPost.id();
         String postUsername = TestDataUserPost.username();
@@ -39,7 +39,7 @@ public class CRUDFlowTest {
         //Create User
             given()
                     .log().all()
-                    .header(Config.CONTENT_TYPE_HEADER(), Config.CONTENT_TYPE_JSON())
+                    .header(Config.CONTENT_TYPE_HEADER, Config.CONTENT_TYPE_JSON)
                     .body(PostUserPayload.getRegisterPayload(postId,
                             postUsername,
                             postFirstname,
@@ -49,28 +49,28 @@ public class CRUDFlowTest {
                             postPhone,
                             postUserStatus))
                     .when()
-                    .post(Config.CREATE_USER())
+                    .post(Config.CREATE_USER)
                     .then()
                     .log().all()
                     .assertThat()
-                    .statusCode(Config.SUCCESS_STATUS_CODE())
-                    .body("code", equalTo(Config.SUCCESS_STATUS_CODE()));
+                    .statusCode(Config.SUCCESS_STATUS_CODE)
+                    .body("code", equalTo(Config.SUCCESS_STATUS_CODE));
 
         //Read User
             given()
                     .log().all()
                     .when()
-                    .get(Config.GET_USER(), postUsername)
+                    .get(Config.GET_USER, postUsername)
                     .then()
                     .log().all()
                     .assertThat()
-                    .statusCode(Config.SUCCESS_STATUS_CODE())
+                    .statusCode(Config.SUCCESS_STATUS_CODE)
                     .body("username", equalTo(postUsername));
 
         //Update User
             given()
                     .log().all()
-                    .header(Config.CONTENT_TYPE_HEADER(), Config.CONTENT_TYPE_JSON())
+                    .header(Config.CONTENT_TYPE_HEADER, Config.CONTENT_TYPE_JSON)
                     .body(PostUserPayload.getRegisterPayload(putId,
                             putUsername,
                             putFirstName,
@@ -81,45 +81,45 @@ public class CRUDFlowTest {
                             putUserStatus
                     ))
                     .when()
-                    .put(Config.UPDATE_USER(), putUsername)
+                    .put(Config.UPDATE_USER, putUsername)
                     .then()
                     .log().all()
                     .assertThat()
-                    .statusCode(Config.SUCCESS_STATUS_CODE())
-                    .body("code", equalTo(Config.SUCCESS_STATUS_CODE()));
+                    .statusCode(Config.SUCCESS_STATUS_CODE)
+                    .body("code", equalTo(Config.SUCCESS_STATUS_CODE));
 
         //Read User
         given()
                 .log().all()
                 .when()
-                .get(Config.GET_USER(), putUsername)
+                .get(Config.GET_USER, putUsername)
                 .then()
                 .log().all()
                 .assertThat()
-                .statusCode(Config.SUCCESS_STATUS_CODE())
+                .statusCode(Config.SUCCESS_STATUS_CODE)
                 .body("phone", equalTo(putPhone));
 
         //Delete User
         given()
                 .log().all()
                 .when()
-                .delete(Config.DELETE_USER(), putUsername)
+                .delete(Config.DELETE_USER, putUsername)
                 .then()
                 .log().all()
                 .assertThat()
-                .statusCode(Config.SUCCESS_STATUS_CODE())
-                .body("code", equalTo(Config.SUCCESS_STATUS_CODE()));
+                .statusCode(Config.SUCCESS_STATUS_CODE)
+                .body("code", equalTo(Config.SUCCESS_STATUS_CODE));
 
         //Read User
         try {
             given()
                     .log().all()
                     .when()
-                    .get(Config.GET_USER(), putUsername)
+                    .get(Config.GET_USER, putUsername)
                     .then()
                     .log().all()
                     .assertThat()
-                    .statusCode(Config.NOT_FOUND_STATUS_CODE())
+                    .statusCode(Config.NOT_FOUND_STATUS_CODE)
                     .body("message", equalTo("User not found"));
         } catch (Exception e) {
             Assert.assertTrue(e.getMessage().contains("404"), "Beklenen durum: delete sonrasi 404");

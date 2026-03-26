@@ -19,7 +19,7 @@ public class BaseUserTest {
 
     @BeforeClass
     public void setUp() {
-        RestAssured.baseURI = Config.BASE_URI();
+        RestAssured.baseURI = Config.BASE_URI;
     }
 
     public void createUser() {
@@ -35,7 +35,7 @@ public class BaseUserTest {
 
         given()
                 .log().all()
-                .header(Config.CONTENT_TYPE_HEADER(), Config.CONTENT_TYPE_JSON())
+                .header(Config.CONTENT_TYPE_HEADER, Config.CONTENT_TYPE_JSON)
                 .body(PostUserPayload.getRegisterPayload(postId,
                         postUsername,
                         postFirstname,
@@ -45,12 +45,12 @@ public class BaseUserTest {
                         postPhone,
                         postUserStatus))
                 .when()
-                .post(Config.CREATE_USER())
+                .post(Config.CREATE_USER)
                 .then()
                 .log().all()
                 .assertThat()
                 .statusCode(200)
-                .body("code", equalTo(Config.SUCCESS_STATUS_CODE()));
+                .body("code", equalTo(Config.SUCCESS_STATUS_CODE));
 
         createdUsername = postUsername;
     }

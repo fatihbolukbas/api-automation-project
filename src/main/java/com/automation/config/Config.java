@@ -22,40 +22,4 @@ public class Config {
     // Assertions
     public static final int SUCCESS_STATUS_CODE = 200;
     public static final int NOT_FOUND_STATUS_CODE = 404;
-
-    public static String BASE_URI() {
-        return BASE_URI;
-    }
-
-    public static String CONTENT_TYPE_HEADER() {
-        return CONTENT_TYPE_HEADER;
-    }
-
-    public static String CONTENT_TYPE_JSON() {
-        return CONTENT_TYPE_JSON;
-    }
-
-    public static String CREATE_USER() {
-        return CREATE_USER;
-    }
-
-    public static String UPDATE_USER() {
-        return UPDATE_USER;
-    }
-
-    public static String GET_USER() {
-        return GET_USER;
-    }
-
-    public static String DELETE_USER() {
-        return DELETE_USER;
-    }
-
-    public static int SUCCESS_STATUS_CODE() {
-        return SUCCESS_STATUS_CODE;
-    }
-
-    public static int NOT_FOUND_STATUS_CODE() {
-        return NOT_FOUND_STATUS_CODE;
-    }
 }

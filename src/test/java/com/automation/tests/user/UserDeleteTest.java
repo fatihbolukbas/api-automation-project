@@ -21,11 +21,11 @@ public class UserDeleteTest extends BaseUserTest {
         given()
                 .log().all()
                 .when()
-                .delete(Config.DELETE_USER(), username)
+                .delete(Config.DELETE_USER, username)
                 .then()
                 .log().all()
                 .assertThat()
                 .statusCode(200)
-                .body("code", equalTo(Config.SUCCESS_STATUS_CODE()));
+                .body("code", equalTo(Config.SUCCESS_STATUS_CODE));
     }
 }
