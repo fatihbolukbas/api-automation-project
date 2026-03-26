@@ -8,9 +8,6 @@ public class Config {
     public static final String CONTENT_TYPE_JSON = "application/json";
     public static final String API_VERSION = "v2";
 
-    // Timeout
-    public static final int CONNECTION_TIMEOUT = 5000;
-    public static final int READ_TIMEOUT = 10000;
 
     // Endpoints
     public static final String USER_ENDPOINT = "/user";
